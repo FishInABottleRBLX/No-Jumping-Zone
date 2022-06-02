@@ -1,0 +1,55 @@
+
+{
+    "name": "Framework",
+    "tree": {
+        "$className": "DataModel",
+
+        "ReplicatedStorage": {
+            "$className": "ReplicatedStorage",
+
+            "Controllers": {
+                "$className": "Folder",
+                "$path": "src/Controllers"
+            },
+
+            "Packages": {
+                "$className": "Folder",
+                "$path": "Packages"
+            },
+
+            "Libraries": {
+                "$className": "Folder",
+                "$path": "src/Libraries"
+            }
+        },
+
+        "ServerStorage": {
+            "$className": "ServerStorage",
+
+            "Services": {
+                "$className": "Folder",
+                "$path": "src/Services"
+            }
+        },
+
+        "ServerScriptService": {
+            "$className": "ServerScriptService",
+  
+            "Bootstrap": {
+                "$path": "src/Bootstrap_Server"
+            }
+        },
+
+        "StarterPlayer": {
+            "$className": "StarterPlayer",
+  
+            "StarterPlayerScripts": {
+                "$className": "StarterPlayerScripts",
+          
+                "Bootstrap": {
+                    "$path": "src/Bootstrap_Client"
+                }
+            }
+        }
+    }
+}
