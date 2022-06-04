@@ -7,3 +7,4 @@ realm = "shared"
 [dependencies]
 Fusion = "elttob/fusion@0.1.1-beta"
 Knit = "sleitnick/knit@^1.2"
+Signal = "sleitnick/signal@1.2.0"
