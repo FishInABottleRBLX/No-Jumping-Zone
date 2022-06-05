@@ -20,6 +20,11 @@
             "Libraries": {
                 "$className": "Folder",
                 "$path": "src/Libraries"
+            },
+
+            "Assets": {
+                "$className": "Folder",
+                "$path": "src/Assets"
             }
         },
 

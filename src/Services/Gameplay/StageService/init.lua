@@ -7,6 +7,7 @@ local Signal = require(ReplicatedStorage.Packages.Signal)
 local PlayerUtilities = require(ReplicatedStorage.Libraries.PlayerUtilities)
 --local StageBadges = require(script.StageBadges)
 local UserDataService
+local SoundEffectsService
 
 --local BONUS_STAGES_CONTAINER: Instance = workspace.Map.Stages.BonusStages
 local STAGE_CHECKPOINTS_CONTAINER: Instance = workspace.Map.Stages.Checkpoints
@@ -21,6 +22,7 @@ local StageService = Knit.CreateService({
 -- Initialization.
 function StageService:KnitStart()
     UserDataService = Knit.GetService("UserDataService")
+	SoundEffectsService = Knit.GetService("SoundEffectsService")
 
 	-- Every BasePart child under STAGE_CHECKPOINTS_CONTAINER is considered a checkpoint.
 	for _, Checkpoint: Instance in pairs(STAGE_CHECKPOINTS_CONTAINER:GetChildren()) do
@@ -107,6 +109,7 @@ function StageService:UpdateCurrentCheckpoint(Player: Player, StageNumber: numbe
 	if StageNumber % 1 > 0 or StageNumber <= 0 then
 		return false
 	end
+
 	--[[
 		Since the actual checkpoint instances do not have any sort of debounces
 		we need to check to see if they have even progressed further in order
@@ -122,8 +125,8 @@ function StageService:UpdateCurrentCheckpoint(Player: Player, StageNumber: numbe
 
 	-- If we ensure that a change has happened we can do things like updating the client.
 	if PreviousCheckpoint ~= StageNumber then
-		self.StageStarted:Fire(Player, StageNumber)
-		-- Play sound effects.
+		SoundEffectsService:PlaySoundEffect(Player, "CheckpointTouched")
+		SoundEffectsService:PlaySoundEffect(Player, "Stage" .. tostring(StageNumber))
 	end
 
 	-- We do most of the reward giving here for backwards compatability reasons.
